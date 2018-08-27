@@ -1,0 +1,9 @@
+#!/bin/bash
+sudo su
+yum update -y
+yum install httpd php -y
+cd /var/www/html
+aws s3 cp https://s3.amazonaws.com/jammyjam/application-prod.zip application_prod.zip
+unzip application_prod.zip
+rm -rf application_prod.zip
+sudo service httpd start
